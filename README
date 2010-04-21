@@ -1,0 +1,15 @@
+This is MOS, the MANTIS Operating System.
+
+To get started, check out the pre-built images for telosb, micaz, and
+mica2 in the hello_world directory, as well as the instructions on how
+to load them onto motes.  More in-depth documentation and tutorials
+can be found on the MANTIS website, at http://mantis.cs.colorado.edu.
+
+Check out the setup tutorials on the webpage for an introduction to
+MANTIS:
+http://mantis.cs.colorado.edu/index.php/tiki-index.php?page=Tutorials
+
+If you have any questions or comments, you can direct them to the
+mantis users mailing list, found at:
+http://mantis.cs.colorado.edu/mailman/listinfo/mantis-users
+
