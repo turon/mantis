@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if ! test -e ../../configure
+then
+  echo "Please run autogen.sh in ../../ first"
+  exit 1
+fi
+
+CFLAGS="-Wall -ggdb -O0" ../../configure --host=arm-linux --enable-build=yes --enable-arm=yes $@
+

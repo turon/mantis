@@ -1,0 +1,5 @@
+README for blink.c
+
+- This is a small sample program that demonstrates both the use of
+  the on-board LEDs as well as the creation of a simple application on
+  top of the MANTIS operating system.

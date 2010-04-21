@@ -1,0 +1,34 @@
+This directory contains three different application that all demonstrate the use of the ported Contiki ELF-loader library.
+
+IMPORTANT
+In order to compile and test the applications three tools are needed, these are placed in the mantis/src/apps/load_an_elf, but need to be copied into the path (for example the mantis tools bin-directory).
+The programs are named binary2buffer, binary2buffer_h and generate_symbols.
+
+
+load_static:
+Loads a static ELF file stored in read-only memory.
+
+load_net:
+Receives an ELF file via radio and loads it.
+The transmitting mote should run the send_static application.
+
+send_static:
+Sends a static ELF file stored in read-only memory to surrounding motes, using a very simple transfer protocol.
+The receiving motes should run load_net.
+
+To compile the load_static program (must be run 2 times):
+make load_static.elf CORE=load_static.elf
+make load_static.elf CORE=load_static.elf
+bsl.py --telosb -c /dev/ttyUSB0 -e
+bsl.py --telosb -r -c /dev/ttyUSB0 -p load_static.elf
+
+To compile the load_net program (must be run 2 times):
+make load_net.elf CORE=load_net.elf
+make load_net.elf CORE=load_net.elf
+bsl.py --telosb -c /dev/ttyUSB0 -e
+bsl.py --telosb -r -c /dev/ttyUSB0 -p load_net.elf
+
+To compile the send_static program:
+make send_static.elf
+bsl.py --telosb -c /dev/ttyUSB1 -e
+bsl.py --telosb -r -c /dev/ttyUSB1 -p send_static.elf

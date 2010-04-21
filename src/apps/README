@@ -1,0 +1,19 @@
+This directory contains sample applications which demonstrate how to
+use certain aspects of the MOS System.  The following are included:
+
+examples
+=========
+alarm_example:  Demonstrates the MOS Alarm system. 
+
+gps_example:	Demonstrates the GPS driver for the MICA2/MICAZ GPS
+		Board. 
+
+led_example:    Demonstrates the three LED manipulation functions.
+
+nodemd_example: Demonstrates the NodeMD debugging system.
+
+printf_example: Shows how to use the mos printf() function to display
+		data of various types.
+
+sleep_example:  Demonstrates the different sleep modes and explains
+		the differences between them.

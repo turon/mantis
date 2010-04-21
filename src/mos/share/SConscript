@@ -1,0 +1,21 @@
+
+import glob
+import os
+from scripts.build_support import *
+
+Import ('*')
+
+files = glob.glob (env['rootdir'] + 'src/mos/share/*.c')
+file_list = strip_path_from_files (files)
+
+if env['debug'] == '1':
+    debug_file_list = []
+    for myfile in file_list:
+        newfile = myfile.replace('.c','.debug.c')
+        env.Default(env.Debug(newfile, myfile))
+        debug_file_list.append(newfile)
+    share = env.Library('share', debug_file_list)
+else:
+    share = env.Library ('share', file_list)
+
+env.Default(share)

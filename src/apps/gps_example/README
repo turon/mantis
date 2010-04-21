@@ -1,0 +1,4 @@
+Demonstrates basic usage of the GPS driver (found in
+src/mos/dev/mica-gps.c) by reading GPS Fix data and printing it once a
+valid fix occurs.  You will need a GPS Board attached to a MICA2 or
+MICAZ for this application.  

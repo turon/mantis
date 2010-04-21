@@ -1,0 +1,30 @@
+
+import glob
+import os
+import string
+from scripts.build_support import *
+
+Import ('*')
+
+app_names_list = ['testbed-demo.elf', 'radio-demo.elf', 'testbed-sense.elf', 'testbed-discover.elf', 'testbed-load.elf', 'testbed_send.elf', 'testbed_recv.elf', 'testbed_multihop_sense.elf',  'testbed_multihop_base.elf', 'testbed_multihop_relay.elf']
+testbed_demo_sources = ['testbed-demo.c']
+radio_demo_sources = ['radio-demo.c']
+testbed_sense_sources = ['testbed-sense.c']
+testbed_discover_sources = ['testbed-discover.c']
+testbed_load_sources = ['testbed-load.c']
+testbed_send_sources = ['testbed_send.c']
+testbed_recv_sources = ['testbed_recv.c']
+testbed_multihop_sense_sources = ['testbed-multihop-sense.c']
+testbed_multihop_base_sources = ['testbed-multihop-base.c']
+testbed_multihop_relay_sources = ['testbed-multihop-relay.c']
+app_sources_list = [testbed_demo_sources, radio_demo_sources,
+testbed_sense_sources, testbed_discover_sources, testbed_load_sources,
+testbed_send_sources, testbed_recv_sources,
+testbed_multihop_sense_sources, testbed_multihop_base_sources, testbed_multihop_relay_sources]
+
+
+
+# app build methods
+loadstat = ARGUMENTS.get('load', '0')
+build_app_function(env, app_names_list, app_sources_list, loadstat)
+

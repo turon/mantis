@@ -1,0 +1,5 @@
+#!/bin/sh
+
+scons -D platform=telosb && \
+file_uploader.rb 128.138.206.62 2 ./build-telosb/testbed_multihop_base.elf &&\
+ file_uploader.rb 128.138.206.62 3 ./build-telosb/testbed_multihop_sense.elf true

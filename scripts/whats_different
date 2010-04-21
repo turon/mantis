@@ -1,0 +1,2 @@
+#!/bin/sh
+svn status | grep -v "^?"

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#which programming board to use:
+#programmer="dapa"
+programmer="-dprog=mib510"
+
+#which device to communicate over:
+#device="-dlpt=/dev/parport0"
+device="-dserial=/dev/ttyS0"
+
+#which processor we're communicating with
+dpart="-dpart=ATmega128"
+
+echo "Using $programmer programming board"
+
+#turn on on chip debugging
+uisp $programmer $device $dpart --wr_fuse_h=0x10
+
+echo "done."

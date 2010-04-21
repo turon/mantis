@@ -1,0 +1,27 @@
+
+import glob
+import os
+from scripts.build_support import *
+
+
+Import ('*')
+files = glob.glob (env['rootdir'] + 'src/mos/kernel/micro/*.c')
+
+file_list = strip_path_from_files (files)
+
+if env['debug'] == '1':
+    no_debug_list = ['mos_debugging.c', 'msched.c', 'mem.c', 'tlist.c', 'clock.c', 'mutex.c']
+    
+    debug_file_list = []
+    for myfile in file_list:
+        newfile = myfile.replace('.c','.debug.c')
+
+        if listfind(myfile, no_debug_list):
+            newfile = myfile
+        else:
+            env.Default(env.Debug(newfile, myfile))
+        debug_file_list.append(newfile)
+    kernel_generic = env.Library('kernel_generic', debug_file_list)
+else:
+    kernel_generic = env.Library ('kernel_generic', file_list)
+env.Default(kernel_generic)

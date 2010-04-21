@@ -1,0 +1,20 @@
+
+import glob
+import os
+from scripts.build_support import *
+
+Import ('*')
+
+files = glob.glob (env['rootdir'] + 'src/mos/dev/*.c')
+file_list = strip_path_from_files (files)
+
+if env['debug'] == '1':
+    debug_file_list = []
+    for myfile in file_list:
+        newfile = myfile.replace('.c','.debug.c')
+        env.Default(env.Debug(newfile, myfile))
+        debug_file_list.append(newfile)
+    dev = env.Library('dev', debug_file_list)
+else:
+    dev = env.Library ('dev', file_list)
+env.Default(dev)

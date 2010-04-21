@@ -1,0 +1,13 @@
+UARTS README
+
+uartsender -will send single bytes over the serial line (using the uart). It repeatedly counts from 0 to 7 outputting the value both on the LEDS and on the uart.
+
+uartsender -will receive bytes over the serial line (using the uart) and display the value it receives on the LEDS.
+
+This program should work using the following paths:
+nymph send ---> xmos recv
+xmos send ---> nymph recv
+nymph send ---> nymph recv
+xmos send ---> xmos recv
+
+Note the nymph send ---> nymph recv needs a null modem cable which should connect the ground wire between the two nymphs, while the tx/rx wires should be swapped.

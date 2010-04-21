@@ -1,0 +1,24 @@
+#!/bin/bash
+
+`which avr-gcc &> /dev/null`
+export RESULT=$?
+if test $RESULT -ne 0
+then
+  echo ""
+  echo "Please install the avr gcc compiler. Then, put the location of"
+  echo "avr-gcc in your path and rerun this configure."
+  echo "The avr toolchain can be found in the downloads section of"
+  echo "the mantis website (http://mantis.cs.colorado.edu)."
+  echo ""
+  exit 1
+fi
+
+if ! test -e ../../configure
+then
+  echo "Please run autogen.sh in ../../ first"
+  exit 1
+fi
+
+AR=avr-ar CC=avr-gcc CFLAGS="-Wall -Wno-format -Os -g -mmcu=atmega128" LDFLAGS="-mmcu=atmega128" ASFLAGS="-mmcu=atmega128" ../../configure --enable-build=yes --enable-micaz=yes --host=avr $@
+
+

@@ -1,0 +1,30 @@
+
+import glob
+import os
+import string
+from scripts.build_support import *
+
+Import ('*')
+
+
+# List of application files and sources defined here
+# Example definition:
+#
+#   app_names_list = ['foo.elf', 'bar.elf']
+#   foo_sources = ['foo.c']
+#   bar_sources = ['bar1.c', 'bar2.c', 'bar3.c']
+#   app_sources_list = [foo_sources, bar_sources]
+
+# what to call the resulting program(s).
+app_names_list = ['pub_sub_test.elf']
+
+# the list of the source files that need to be compiled  to produce pub_sub apps
+pub_sub_sources = ['pub_sub.c', 'test_pub_sub.c']
+ 
+# list all the source lists here
+app_sources_list = [pub_sub_sources]
+
+# app build methods
+loadstat = ARGUMENTS.get('load', '0')
+build_app_function(env, app_names_list, app_sources_list, loadstat)
+

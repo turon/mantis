@@ -1,0 +1,42 @@
+
+import glob
+import os
+import string
+from scripts.build_support import *
+
+Import ('*')
+
+
+# List of application files and sources defined here
+# Example definition:
+#
+#   app_names_list = ['foo.elf', 'bar.elf']
+#   foo_sources = ['foo.c']
+#   bar_sources = ['bar1.c', 'bar2.c', 'bar3.c']
+#   app_sources_list = [foo_sources, bar_sources]
+
+app_names_list = ['tinyblink.elf', 'blink0.elf', 'blink1.elf', 'blink2.elf', 'deluge_setup.elf', 'radio_test.elf']
+tinyblink_sources = ['tinyblink.c']
+blink0_sources = ['blink0.c']
+blink1_sources = ['blink1.c']
+blink2_sources = ['blink2.c']
+blink3_sources = ['blink3.c']
+deluge_setup_sources = ['deluge_setup.c']
+radio_test_sources = ['radio_test.c']
+app_sources_list = [tinyblink_sources, blink0_sources, blink1_sources, blink2_sources, deluge_setup_sources, radio_test_sources]
+
+if env['plat'] == 'linux':
+    app_names_list.append('aqshell')
+    aqshell_sources = ['aqshell.c']
+    app_sources_list.append(aqshell_sources)
+
+
+
+
+
+
+
+
+# app build methods
+loadstat = ARGUMENTS.get('load', '0')
+build_app_function(env, app_names_list, app_sources_list, loadstat)

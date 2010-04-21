@@ -1,0 +1,24 @@
+import glob
+import os
+import string
+from scripts.build_support import *
+
+Import ('*')
+
+# This is a comment
+
+# what to call the resulting program(s).
+app_names_list = ['xlayer_batt.elf', 'xlayer_batt_base.elf']
+
+# the list of the source files that need to be compiled  to produce xlayer_batt
+xlayer_batt_sources = ['../../../transport/transport_final_cl.c','xlayer_batt.c']
+xlayer_batt_base_sources = ['../../../transport/transport_final_cl.c','xlayer_batt_base.c']
+
+# list all the source lists here
+app_sources_list = [xlayer_batt_sources, xlayer_batt_base_sources]
+
+
+# app build methods
+loadstat = ARGUMENTS.get('load', '0')
+build_app_function(env, app_names_list, app_sources_list, loadstat)
+

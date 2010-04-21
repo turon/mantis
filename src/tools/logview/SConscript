@@ -1,0 +1,19 @@
+
+import glob
+import os
+from scripts.build_support import *
+
+Import ('*')
+files = glob.glob (env['rootdir'] + 'src/tools/logview/*.c')
+
+envcopy = env.Copy ()
+envcopy.ParseConfig ('pkg-config libglade-2.0 libxml-2.0 --cflags --libs')
+
+file_list = strip_path_from_files (files)
+
+add_include_path (envcopy['CPPPATH'], '#src/tools/logview/include')
+add_include_path (envcopy['CPPPATH'], '#src/tools')
+
+logview = envcopy.Program ('logview', file_list)
+
+Return ('logview')

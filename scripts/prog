@@ -1,0 +1,50 @@
+#!/bin/bash
+
+rm -f boot.elf boot.srec
+
+cp ../../mos/kernel/avr/boot/boot.elf .
+
+if [ ! -f ./boot.srec ]
+then
+      avr-objcopy --target=srec boot.elf boot.srec
+fi
+
+#which programming board to use:
+#programmer="dapa"
+programmer="-dprog=mib510"
+
+#which device to communicate over:
+#device="-dlpt=/dev/parport0"
+#device="-dserial=/dev/ttyS0"
+device="-dserial=$2"
+
+#which processor we're communicating with
+dpart="-dpart=ATmega128"
+
+file="$1.srec"
+
+#write the fuse so it allows serial programming
+echo "uisp $programmer $device $dpart --wr_fuse_h=0xd1"
+uisp $programmer $device $dpart --wr_fuse_h=0xd1
+#erase what's there
+echo "uisp $programmer $device $dpart --erase"
+uisp $programmer $device $dpart --erase
+#send our program
+echo "uisp $programmer $device $dpart --upload if=$file"
+uisp $programmer $device $dpart --upload if=$file
+#verify the file
+#echo "uisp $programmer $device $dpart --verify if=$file"
+#uisp $programmer $device $dpart --verify if=$file
+
+#write the fuse so it allows serial programming
+echo "uisp $programmer $device $dpart --wr_fuse_h=0xd0"
+uisp $programmer $device $dpart --wr_fuse_h=0xd0
+#send our boot-loader
+echo "uisp $programmer $device $dpart --upload if=boot.srec"
+uisp $programmer $device $dpart --upload if=boot.srec
+#verify the file
+#echo "uisp $programmer $device $dpart --verify if=boot.srec"
+#uisp $programmer $device $dpart --verify if=boot.srec
+
+echo "done."
+

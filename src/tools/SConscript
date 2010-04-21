@@ -1,0 +1,14 @@
+
+Import ('*')
+
+#targets = SConscript (['cortex/SConscript'], 'env')
+
+#targets = SConscript (['gateway/SConscript'], 'env')
+
+targets = SConscript (['shell/SConscript'], 'env')
+
+#targets = SConscript (['gtkMosShell/SConscript'], 'env')
+
+#targets = SConscript (['logview/SConscript'], 'env')
+
+Return ('targets')

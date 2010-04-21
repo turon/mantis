@@ -1,0 +1,42 @@
+This program, along with the included ruby script, can be used to
+write data to the TELOSb external flash with the following steps:
+
+
+1. Compile and load the application onto a TELOSb node.  You can
+change where in the flash the file should be stored by changing the
+DEST_ADDR macro in the source code.
+
+2. Now that you have the receiver on the node, you can transfer any
+file you want to the node:
+    ----------------------------------------------
+    $ ruby send_file.rb /dev/ttyUSB0
+    ----------------------------------------------
+
+    The ruby script will tell you:
+    ----------------------------------------------
+    using device: /dev/ttyUSB0
+    ----------------------------------------------
+    
+3. At this point, reset the node.  You should see the following output:
+    ----------------------------------------------
+    flash receiver
+    erasing flash.... (long pause) done. Waiting for file.
+    ----------------------------------------------
+    
+4. Enter the path to the file to transfer and press enter.
+    ----------------------------------------------
+    /home/ledbettj/myfile.txt
+    ----------------------------------------------
+
+    The node will now inform you of the status of the transfer, along
+    with a happy smiley face.
+    ----------------------------------------------
+    13652 total bytes to receive (size 4)
+    :)13588 bytes left (size 64)
+    :)13524 bytes left (size 64)
+    (etc...)
+    :)all done
+    ----------------------------------------------
+
+
+5. The file has been written to the node's external flash!

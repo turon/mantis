@@ -1,0 +1,29 @@
+
+import glob
+import os
+import string
+from scripts.build_support import *
+
+Import ('*')
+
+
+# List of application files and sources defined here
+# Example definition:
+#
+#   app_names_list = ['foo.elf', 'bar.elf']
+#   foo_sources = ['foo.c']
+#   bar_sources = ['bar1.c', 'bar2.c', 'bar3.c']
+#   app_sources_list = [foo_sources, bar_sources]
+
+app_names_list = ['sleep_test.elf']
+sleep_test_sources = ['sleep_test.c']
+app_sources_list = [sleep_test_sources]
+
+
+
+
+
+
+# app build methods
+loadstat = ARGUMENTS.get('load', '0')
+build_app_function(env, app_names_list, app_sources_list, loadstat)

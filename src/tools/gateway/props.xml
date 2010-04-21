@@ -1,0 +1,37 @@
+<!-- This is the event file, it describes the packets
+that come in off of the sensor network. The ID is the
+unique id of the event type. The type attribute in 
+each data is one of "i" or "l"...
+-->
+
+<events>
+  <event id="5">
+    <data name="battery" type="H" min="2600" max="3500" />
+  </event>
+  <event id="7">
+    <data name="light" type="B" />
+    <data name="temp" type="B" />
+  </event>
+  <event id="8">
+    <data name="batt" type="H" max="2700" min="3300" />
+    <data name="accelx" type="h" min="440" max="520" />
+    <data name="accely" type="h" min="440" max="520" />
+    <data name="accel_ms" type="h" min="17" max="500" />
+    <data name="light" type="B" min="0" max="100" />
+    <data name="temp" type="B" min="60" max="100" />
+    <data name="txpw" type="B" min="0" max="255" />
+    <data name="rss" type="B" min="28" max="255" />
+  </event>
+  <event id="9">
+    <data name="port" type="B" />
+    <data name="protoid_h" type="B" />
+    <data name="src" type="B" />
+    <data name="dest" type="B" />
+    <data name="type_h" type="B" />
+    <data name="seq" type="B" />
+    <data name="dtb" type="B" />
+    <data name="ttl_h" type="B" />
+    <data name="parent_h" type="B" />
+  </event>
+</events>
+

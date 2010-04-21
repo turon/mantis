@@ -1,0 +1,61 @@
+This directory contains the classic "hello world" example application
+for MANTIS.
+
+You can use this application to verify that your MANTIS environment is
+set up correctly.  It is recommended that you follow the instructions
+located at
+http://mantis.cs.colorado.edu/index.php/tiki-index.php?page=Tutorials
+to set up your environment in either Linux or Windows/cygwin first.
+
+
+The example application prints via the serial line to the terminal, as
+well as receiving packets over the radio and displays them to the
+terminal. 
+
+To install it, follow these steps:
+
+====== MICA2/MICAZ =====
+The mica nodes require that the MANTIS bootloader be installed first:
+
+    > ../scripts/set_mos
+
+The node can now be programmed using the mos_shell application, which
+is distributed with the mantis toolchain, and should be in your $PATH
+if you correctly followed the setup instructions on the website. The
+mos_shell application for linux is also included in this directory in
+case you are just previewing the system and do not want to setup the
+toolchain yet.
+
+   > mos_shell -p mica2/hello_world.srec --sdev /dev/ttyS0 (or)
+   > mos_shell -p micaz/hello_world.srec --sdev /dev/ttyS0
+
+You will need to reset the node in order for the programming to begin.
+(if your programming board is attached to a different serial port,
+substitute that for /dev/ttyS0).
+
+===== TELOSB =====
+The telos nodes are programmed with bsl.py, the Boot Strap Loader.
+This file should be in your $PATH if you correctly followed the setup
+instructions on the website.  It is also included in this directory in
+case you are just previewing the system and do not want to setup the
+toolchain yet.
+
+  > ./telosb/bsl.py --telosb -e -c /dev/ttyUSB0 -p telosb/hello_world.elf
+
+Reset the node; output can be viewed with the mos_shell application:
+  > mos_shell --sdev /dev/ttyUSB0 -n
+
+NOTE:  To program the nodes under cygwin, you will need to install the
+Virtual COM Port Driver; this assigns the USB device a windows COM
+number, allowing you to program the USB device using /dev/ttySx, where
+x is the windows COM port number minus one. (e.g., COM8 ->
+/dev/ttyS7). The VCP Driver is available from
+http://www.ftdichip.com/Drivers/VCP.htm.
+
+
+This brief hello world application is not a complete guide; for more
+information, please see our website:
+
+* http://mantis.cs.colorado.edu
+* http://mantis.cs.colorado.edu/index.php/tiki-index.php?page=Tutorials
+* http://mantis.cs.colorado.edu/index.php/tiki-index.php?page=Documentation

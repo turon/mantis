@@ -1,0 +1,27 @@
+RADIO_TEST README:
+
+FILES:
+	Makefile.am	-Makefile to be used with autoconf.
+	generator.c	-Generating/Sending program
+	receiver.c	-Receiving program.
+
+PROGRAMS:
+
+generator - This program can be used to generate the numbers 0,1,2,...255,0,1,
+  and send them over the radio (via broadcast). 
+
+receiver - This program will look for values over the radio and display the 
+  value it receives in binary on the LED's, additionally it will send information 
+  over the uart which can be viewed using the receiver program from printf. 
+
+USE:
+
+1.  The generator program should be loaded onto one remote sensor node 
+    (typically using 'make load_send') and started.
+
+2.  The receiver program should be loaded onto the receiving sensor node 
+    (typically using 'make load_recv') and started.
+
+3.  Lastly, output can be viewed using an xmos process and the commander program.
+    Run the mantis.elf program in the build/linux/src/apps/commander directory to 
+    get the values that the receiving node gets.

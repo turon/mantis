@@ -1,0 +1,39 @@
+//  This file is part of MANTIS OS, Operating System
+//  See http://mantis.cs.colorado.edu/
+//
+//  Copyright (C) 2003,2004,2005 University of Colorado, Boulder
+//
+//  This program is free software; you can redistribute it and/or
+//  modify it under the terms of the mos license (see file LICENSE)
+
+
+MST Proto Example README:
+
+This app is meant to be an example of the minimum spanning tree
+network protocol (which is a multi-hop network routing protocol) used
+in combination with sensor devices. It is very similar to the
+mst_proto_example application.
+
+There are two parts to this application, the sending node(s) and the base.
+
+Sending (sample_app_send.c):
+This application has two threads, one thread which formats packets to be
+sent out using the event layer on top of the minimum spanning tree which
+fits into the network layer. Data from the light sensor fills the
+event structure and the packet is sent sent using the net_send
+function. Light strength is displayed on the sending node's LEDs. 
+
+The other thread is meant to show bi-directional communication in that
+packets sent from the basestation to an application are handled in this
+thread.
+
+Receiving (sample_app_recv.c):
+
+The receiving application additionally has two threads. One of these threads
+is the periodic beacon, which sends out a broadcast packet every so-often
+so leaf nodes can setup routes to the basestation. 
+
+The recv thread is the one which receives the data (data meant for the 
+basestation). As each packet is received, the light value, hop count,
+and packet sequence is displayed in the shell. If one node is hopping
+off another to reach the receiving node, the hop count increases.

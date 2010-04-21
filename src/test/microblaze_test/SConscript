@@ -1,0 +1,24 @@
+
+import glob
+import os
+import string
+from scripts.build_support import *
+
+Import ('*')
+
+
+# List of application files and sources defined here
+# Example definition:
+#
+#   app_names_list = ['foo.elf', 'bar.elf']
+#   foo_sources = ['foo.c']
+#   bar_sources = ['bar1.c', 'bar2.c', 'bar3.c']
+#   app_sources_list = [foo_sources, bar_sources]
+
+app_names_list = ['microblaze_test.elf']
+microblaze_test_sources = ['microblaze_test.c test_fix_fft.c fix_fft.c show_amp.c']
+app_sources_list = [microblaze_test_sources]
+
+# app build methods
+loadstat = ARGUMENTS.get('load', '0')
+build_app_function(env, app_names_list, app_sources_list, loadstat)

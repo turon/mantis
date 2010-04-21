@@ -1,0 +1,37 @@
+/*
+  This file is part of MANTIS OS, Operating System for Nymph.
+  See http://mantis.cs.colorado.edu/
+
+  Copyright (C) 2003 University of Colorado, Boulder
+
+  This program is free software; you can redistribute it and/or
+  modify it under the terms of the GNU General Public License
+  as published by the Free Software Foundation; either version 2
+  of the License, or (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  (See http://www.gnu.org/copyleft/gpl.html)
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,
+  USA, or send email to mantis-users@cs.colorado.edu.
+*/
+
+README for sensor_test
+
+This application is used to demonstrate functioning drivers & hardware.
+It usses the commander daemon, so a mos_terminal must be loaded on the
+host. (execute mantis.elf in the mantis/build/linux/src/apps/commander 
+directory).
+
+commands:
+help - (prints this list)
+leds - asks for a number and displays it in binary (only accepts 1-7)
+get temp - sample the current temperature and convert it to degrees F
+get light - get the percentage light in the room
+sounder on - turn on the sounder
+sounder off - turn off the sounder ** DOESN'T WORK **

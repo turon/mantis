@@ -1,0 +1,39 @@
+
+import glob
+import os
+import string
+
+from scripts.build_support import *
+
+Import ('*')
+
+# List of application files and sources defined here
+# Example definition:
+#
+#   app_names_list = ['foo.elf', 'bar.elf']
+#   foo_sources = ['foo.c']
+#   bar_sources = ['bar1.c', 'bar2.c', 'bar3.c']
+#   app_sources_list = [foo_sources, bar_sources]
+
+if env['plat'] == 'linux':
+    app_names_list = ['linux_serial', 'terminal', 'udp_recv',
+                      'udp_send', 'remote_control']
+    linux_serial_sources = ['linux_serial.c']
+    terminal_sources = ['terminal.c']
+    udp_recv_sources = ['udp_recv.c']
+    udp_send_sources = ['udp_send.c']
+    remote_control_sources = ['remote_control.c']
+    app_sources_list = [linux_serial_sources, terminal_sources, udp_recv_sources, udp_send_sources, remote_control_sources]
+else:
+    app_names_list = ['relay.elf', 'sensor_send.elf']
+    relay_sources = ['relay.c']
+    sensor_send_sources = ['sensor_send.c']
+    app_sources_list = [relay_sources, sensor_send_sources]
+
+
+
+
+
+# app build methods
+loadstat = ARGUMENTS.get('load', '0')
+build_app_function(env, app_names_list, app_sources_list, loadstat)

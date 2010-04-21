@@ -1,0 +1,4 @@
+#!/bin/sh
+
+find . -type f ! -name "*.a" ! -name "*.o" ! -name "*.elf" \
+    ! -name "*.srec" ! -name "*.svn-base" ! -name "*.Po" ! -name "semantic.cache" -exec grep -q $1 {} \; -print

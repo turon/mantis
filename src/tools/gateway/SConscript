@@ -1,0 +1,32 @@
+
+import glob
+import os
+from scripts.build_support import *
+
+Import ('*')
+files = glob.glob (env['rootdir'] + 'src/tools/gateway/*.c')
+
+envcopy = env.Copy ()
+envcopy.ParseConfig ('pkg-config gnet-2.0 libxml-2.0 --cflags --libs')
+
+file_list = strip_path_from_files (files)
+
+add_include_path (envcopy['CPPPATH'], '#src/tools/gateway/include')
+add_include_path (envcopy['CPPPATH'], '#src/tools')
+add_include_path (envcopy['CPPPATH'], '#src/tools/cortex/include')
+
+add_link_lib (envcopy['LIBS'], 'com')
+add_link_lib (envcopy['LIBS'], 'kernel')
+
+envcopy['LIBPATH'] = ['#build/linux/src/mos/com',
+                      '#build/linux/src/mos/kernel/linux']
+
+gateway = envcopy.Program ('gateway', 'gateway.c')
+
+gateway = envcopy.Program ('client_random', 'client-random.c')
+
+gateway = envcopy.Program ('client_test', 'client-test.c')
+
+gateway = envcopy.Program ('client_xml_log', 'client-xml-log.c')
+
+Return ('gateway')

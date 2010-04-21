@@ -1,0 +1,24 @@
+import glob
+import os
+import string
+from scripts.build_support import *
+
+Import ('*')
+
+# This is a comment
+
+# what to call the resulting program(s).
+app_names_list = ['xlayer_etx_node.elf', 'xlayer_etx_base.elf']
+
+# the list of the source files that need to be compiled  to produce xlayer_etx_? apps
+xlayer_etx_node_sources = ['../../../transport/transport_final_cl.c','xlayer_etx_node.c']
+xlayer_etx_base_sources = ['../../../transport/transport_final_cl.c','xlayer_etx_base.c']
+
+# list all the source lists here
+app_sources_list = [xlayer_etx_node_sources, xlayer_etx_base_sources]
+
+
+# app build methods
+loadstat = ARGUMENTS.get('load', '0')
+build_app_function(env, app_names_list, app_sources_list, loadstat)
+

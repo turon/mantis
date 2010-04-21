@@ -1,0 +1,32 @@
+opening serial
+done.
+state == INIT
+my id = 255
+state == INIT
+received control
+recvd packet (1st time):	srcID 0	mySeqNo 0	srcDTB 1
+sent packet:	myID 255	mySeqNo 0	myDTB 1
+sent packet:	myID 255	mySeqNo 1	myDTB 1
+recvd packet:	srcID 0	mySeqNo 1	srcDTB 0
+sent packet:	myID 255	mySeqNo 2	myDTB 1
+sent packet:	myID 255	mySeqNo 3	myDTB 1
+recvd packet:	srcID 0	mySeqNo 2	srcDTB 0
+sent packet:	myID 255	mySeqNo 4	myDTB 1
+sent packet:	myID 255	mySeqNo 5	myDTB 1
+sent packet:	myID 255	mySeqNo 6	myDTB 1
+recvd packet:	srcID 0	mySeqNo 3	srcDTB 0
+sent packet:	myID 255	mySeqNo 7	myDTB 1
+sent packet:	myID 255	mySeqNo 8	myDTB 1
+sent packet:	myID 255	mySeqNo 9	myDTB 1
+recvd packet:	srcID 0	mySeqNo 4	srcDTB 0
+sent packet:	myID 255	mySeqNo 10	myDTB 1
+sent packet:	myID 255	mySeqNo 11	myDTB 1
+sent packet:	myID 255	mySeqNo 12	myDTB 1
+recvd packet:	srcID 0	mySeqNo 5	srcDTB 0
+sent packet:	myID 255	mySeqNo 13	myDTB 1
+sent packet:	myID 255	mySeqNo 14	myDTB 1
+sent packet:	myID 255	mySeqNo 15	myDTB 1
+recvd packet:	srcID 0	mySeqNo 6	srcDTB 0
+sent packet:	myID 255	mySeqNo 16	myDTB 1
+sent packet:	myID 255	mySeqNo 17	myDTB 1
+sent packet:	myID 255	mySeqNo 18	myDTB 1

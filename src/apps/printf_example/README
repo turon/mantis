@@ -1,0 +1,41 @@
+/*
+  This file is part of MANTIS OS, Operating System for Nymph.
+  See http://mantis.cs.colorado.edu/
+
+  Copyright (C) 2003 University of Colorado, Boulder
+
+  This program is free software; you can redistribute it and/or
+  modify it under the terms of the GNU General Public License
+  as published by the Free Software Foundation; either version 2
+  of the License, or (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  (See http://www.gnu.org/copyleft/gpl.html)
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,
+  USA, or send email to mantis-users@cs.colorado.edu.
+*/
+
+Printf application.
+
+This program tests the 'printf' library (use #include "printf.h"). Currently
+our printf parser only processes strings (%s), characters (%c) and integers
+(%d). 
+
+
+The Setup:
+1. load the printf program on a sensor node (and turn it off).
+
+2. run the mantis_terminal program (build/linux/src/apps/commander/mantis.elf)
+to start listening over the uart.
+
+3. Connect the sensor node to the computer's serial port using a standard DB9
+cable.
+
+4. Turn the sensor node on, the mantis_terminal program should print out the
+test string.

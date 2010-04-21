@@ -1,0 +1,7 @@
+The directory contains the source file for the shells.
+
+THe shell is running on the pc, communicating with the nymph through 
+the serial port. It's running in the linux environment.
+
+The default serial port is /dev/ttyS0. To modify, you could open
+the serial.c file and change the definition for the DEVICE

@@ -1,0 +1,12 @@
+
+import glob
+import os
+from scripts.build_support import *
+
+Import ('*')
+files = glob.glob (env['rootdir'] + 'src/mos/net/*.c')
+
+file_list = strip_path_from_files (files)
+
+net = env.Library ('net', file_list)
+env.Default(net)

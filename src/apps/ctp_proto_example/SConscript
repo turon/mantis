@@ -1,0 +1,29 @@
+import glob
+import os
+import string
+
+from scripts.build_support import *
+
+Import ('*')
+
+# This is a comment
+
+
+
+# what to call the resulting program(s).
+app_names_list = ['ctp_plus_proto_base.elf', 'ctp_plus_proto_node.elf']
+
+# the list of the source files that need to be compiled  to produce ctp routing apps
+ctp_proto_base_sources = ['net_ctp_plus.c','ctp_plus_proto_base.c']
+ctp_proto_node_sources = ['net_ctp_plus.c','ctp_plus_proto_node.c']
+
+# list all the source lists here
+app_sources_list = [ctp_proto_base_sources, ctp_proto_node_sources]
+
+
+
+ # app build methods
+
+loadstat = ARGUMENTS.get('load', '0')
+
+build_app_function(env, app_names_list, app_sources_list, loadstat)

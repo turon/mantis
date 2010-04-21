@@ -1,0 +1,22 @@
+
+Import ('*')
+
+if env['plat'] == 'linux':
+   print "Building linux kernel"
+   SConscript (['linux/SConscript'], 'env')
+
+
+else:
+   SConscript (['micro/SConscript'], 'env')
+
+   if env['plat'] == 'telosb':
+      print "Building msp430 kernel"
+      SConscript (['msp430/SConscript'], 'env')
+   elif env['plat'] == 'imote2':
+      print "Building pxa27x kernel"
+      SConscript (['pxa27x/SConscript'], 'env')
+   else:
+      print "Building avr kernel"
+      SConscript (['avr/SConscript'], 'env')
+      
+

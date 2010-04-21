@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<sensor_network>
+  <sensor_node>
+    <node_id>0</node_id>
+    <x>10</x>
+    <y>10</y>
+    <z>0</z>
+  </sensor_node>
+  <sensor_node>
+    <node_id>6</node_id>
+    <x>15</x>
+    <y>15</y>
+    <z>0</z>
+  </sensor_node>
+  <sensor_node>
+    <node_id>3</node_id>
+    <x>25</x>
+    <y>12</y>
+    <z>0</z>
+  </sensor_node>
+</sensor_network>

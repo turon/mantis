@@ -1,0 +1,29 @@
+import glob
+import os
+import string
+from scripts.build_support import *
+
+Import ('*')
+
+# This is a comment
+
+# what to call the resulting program(s).
+app_names_list = ['xlayer_etx_node.elf', 'xlayer_etx_base.elf', 'test_trans_midnode1.elf', 'test_trans_midnode2.elf', 'test_trans_midnode3.elf', 'test_trans_midnode4.elf', 'test_trans_midnode5.elf']
+
+# the list of the source files that need to be compiled  to produce xlayer_batt
+xlayer_etx_node_sources = ['../../../transport/transport_final_cl.c','xlayer_etx_node.c']
+xlayer_etx_base_sources = ['../../../transport/transport_final_cl.c','xlayer_etx_base.c']
+test_trans_midnode1_sources = ['../../../transport/transport_final_cl.c','test_trans_midnode1.c']
+test_trans_midnode2_sources = ['../../../transport/transport_final_cl.c','test_trans_midnode2.c']
+test_trans_midnode3_sources = ['../../../transport/transport_final_cl.c','test_trans_midnode3.c']
+test_trans_midnode4_sources = ['../../../transport/transport_final_cl.c','test_trans_midnode4.c']
+test_trans_midnode5_sources = ['../../../transport/transport_final_cl.c','test_trans_midnode5.c']
+
+# list all the source lists here
+app_sources_list = [xlayer_etx_node_sources, xlayer_etx_base_sources, test_trans_midnode1_sources, test_trans_midnode2_sources, test_trans_midnode3_sources, test_trans_midnode4_sources, test_trans_midnode5_sources]
+
+
+# app build methods
+loadstat = ARGUMENTS.get('load', '0')
+build_app_function(env, app_names_list, app_sources_list, loadstat)
+

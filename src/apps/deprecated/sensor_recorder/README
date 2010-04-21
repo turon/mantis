@@ -1,0 +1,7 @@
+Sensor Recorder...
+
+
+This application provides interactive recording of the sensor
+values. You are able to select which sensor to read the values from
+and where to output the values. By using the mos shell you can see a
+command list, the command names should be self explanatory.

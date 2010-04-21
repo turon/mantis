@@ -1,0 +1,6 @@
+#!/bin/sh
+
+#erase what's there
+uisp -dprog=dapa -dlpt=/dev/parport0 --erase
+
+echo "done."

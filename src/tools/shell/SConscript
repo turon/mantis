@@ -1,0 +1,26 @@
+
+import glob
+import os
+from scripts.build_support import *
+
+Import ('*')
+
+if env['plat'] != 'linux':
+    env.Exit('Error: Tools must be build on the linux platform')
+else:
+    file_list = ['shell.c',
+                 'flash.c',
+                 'load.c',
+                 'run.c',
+                 'mos_shell.c'
+                 ]
+    
+    envcopy = env.Copy ()
+    add_include_path (envcopy['CPPPATH'], '#src/tools/shell')
+    envcopy['PROGSUFFIX'] = ''
+
+    mos_shell = envcopy.Program ('mos_shell', file_list)
+    envcopy.Install('/usr/local/bin', mos_shell)
+    envcopy.Alias('install', '/usr/local/bin')
+    
+    Return ('mos_shell')

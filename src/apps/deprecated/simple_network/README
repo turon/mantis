@@ -1,0 +1,28 @@
+//  This file is part of MANTIS OS, Operating System
+//  See http://mantis.cs.colorado.edu/
+//
+//  Copyright (C) 2003,2004,2005 University of Colorado, Boulder
+//
+//  This program is free software; you can redistribute it and/or
+//  modify it under the terms of the mos license (see file LICENSE)
+
+
+Simple Network README:
+
+Multi thermal network is an app which will test many of the functions 
+of MOS. It uses many of the different layers provided by the OS. The
+two sending applications (light_send and temp_send) are identical except
+that they sample from the light / temperature sensor respectively. There
+is an event layer which is used to determine the source, destination
+and event type of each packet. This event header along with the sample
+is packed into a comBuf and sent out through the net layer. In this
+application we use the simple protocol, which appends the protcol
+ID and the port we are sending on to the packet before sending it 
+out through the communication layer. The sample is obtained using the
+device layer. 
+
+On the receive side, we simply do a net_recv on the corresponding 
+port which blocks until we recieve a packet. Next we determine that
+the packet is meant for the basestation (ID 0), and print out information
+based on which type of event it was.
+

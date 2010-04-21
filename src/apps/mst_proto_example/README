@@ -1,0 +1,39 @@
+//  This file is part of MANTIS OS, Operating System
+//  See http://mantis.cs.colorado.edu/
+//
+//  Copyright (C) 2003,2004,2005 University of Colorado, Boulder
+//
+//  This program is free software; you can redistribute it and/or
+//  modify it under the terms of the mos license (see file LICENSE)
+
+
+MST Proto Example README:
+
+This app is meant to be an example of the minimum spanning tree
+network protocol (which is a multi-hop network routing protocol).
+
+There are two parts to this application, the sending node(s) and the base.
+
+Sending (mst_proto_send.c):
+This application has two threads, one thread which formats packets to be
+sent out using the event layer on top of the minimum spanning tree which
+fits into the network layer. The appropriate fields in the event structure
+are filled out and the packet is sent sent using the net_send function.
+
+The other thread is meant to show bi-directional communication in that
+packets sent from the basestation to an application are handled in this
+thread.
+
+Receiving (mst_proto_base.c):
+
+The receiving application additionally has two threads. One of these threads
+is the periodic beacon, which sends out a broadcast packet every so-often
+so leaf nodes can setup routes to the basestation. 
+
+The sink thread is the one which receives the data (data meant for the 
+basestation). There is code which is commented out which will print
+out each part of the mst protocol packet. Currently the basestation
+is setup to forward the packets exactly as they exist over the 
+serial line. These packets can be viewed using the gateway which is located
+in src/tools/gateway/gateway.py.
+

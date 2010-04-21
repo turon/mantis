@@ -1,0 +1,22 @@
+.TH "MOS_SHELL" 1
+.SH NAME
+MOS_SHELL \- Program to interface with a nymph.
+.SH SYNOPSIS
+.B MOS_SHELL
+MOS_SHELL [-t|-p|-l <filename]
+.SH DESCRIPTION
+This program is used to interface with the nymph. Specifically it can load new programs on to it, peek at memory, write to memory and interface with the command program which is loadable onto the nymph.
+.SH OPTIONS
+.TP
+.B \-d <device>
+Name of serial port to open (ex: '/dev/ttyS0').
+.TP
+.B \-n
+Drop directly into the shell (don't look for hardware over the serial port)..
+.TP
+.B \-p <srec_file> 
+Name of an srecor file to load directly onto the nymph and start execution.
+.SH "SEE ALSO"
+There are no related man pages for this program.
+.SH BUGS
+No known bugs as of yet.

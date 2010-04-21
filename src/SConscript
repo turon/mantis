@@ -1,0 +1,11 @@
+
+Import ('*')
+
+SConscript (['mos/SConscript'], 'env')
+
+SConscript (['lib/SConscript'], 'env')
+
+#SConscript (['tools/SConscript'], 'env')
+
+
+

@@ -1,0 +1,8 @@
+steps to put the bootloader on the mica2...
+
+1. run './autogen.sh' in the mantis-root directory.
+2. run './configure' and 'make' in the build/mica2 directory.
+3. put a mica2 on the programming board (hopefully a mib510 programming board). 
+4. cd to the 'mantis/scripts' directory, turn the switch on the programming board and the mica 2 both to 'on' and run './set_mos'
+
+5. flip the switch on the programming board to 'off' so the mica2 can send it's commands through the serial line.

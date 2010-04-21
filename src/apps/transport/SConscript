@@ -1,0 +1,58 @@
+
+import glob
+import os
+import string
+from scripts.build_support import *
+
+Import ('*')
+
+
+# List of application files and sources defined here
+# Example definition:
+#
+#   app_names_list = ['foo.elf', 'bar.elf']
+#   foo_sources = ['foo.c']
+#   bar_sources = ['bar1.c', 'bar2.c', 'bar3.c']
+#   app_sources_list = [foo_sources, bar_sources]
+
+#app_names_list = ['transport_final.elf']
+#transport_sources = ['transport_final.c']
+#app_sources_list = [transport_sources]
+
+# what to call the resulting program(s).
+app_names_list = ['test_trans_base.elf', 'test_trans_sourcenode.elf', 
+'test_trans_midnode1.elf', 'test_trans_midnode2.elf', 'test_trans_midnode3.elf',
+'test_trans_midnode4.elf', 'test_trans_midnode5.elf',
+'niwot_tbed_base.elf', 'niwot_tbed_node1.elf', 'niwot_tbed_node2.elf', 
+'niwot_tbed_node3.elf', 'niwot_tbed_node4.elf']
+
+# the list of the source files that need to be compiled  to produce transport apps
+test_trans_base_sources = ['transport_final_cl.c','test_trans_base.c']
+test_trans_midnode1_sources = ['transport_final_cl.c','test_trans_midnode1.c']
+test_trans_midnode2_sources = ['transport_final_cl.c','test_trans_midnode2.c']
+test_trans_midnode3_sources = ['transport_final_cl.c','test_trans_midnode3.c']
+test_trans_midnode4_sources = ['transport_final_cl.c','test_trans_midnode4.c']
+test_trans_midnode5_sources = ['transport_final_cl.c','test_trans_midnode5.c']
+test_trans_sourcenode_sources = ['transport_final_cl.c','test_trans_sourcenode.c']
+# niwot_leaf_trans_sources = ['transport_final_cl.c','niwot_leaf_trans.c']
+# par_trans_sources = ['PAR_ADboard_Niwot.c','Sprintff.c','i2c_support.c',
+#					'transport_final_cl.c']
+# par_trans_sources = ['command_receiver_version.c','transport_final_cl.c']
+niwot_tbed_base_sources = ['transport_final_cl.c','niwot_tbed_base.c']
+niwot_tbed_node1_sources = ['transport_final_cl.c','niwot_tbed_node1.c']
+niwot_tbed_node2_sources = ['transport_final_cl.c','niwot_tbed_node2.c']
+niwot_tbed_node3_sources = ['transport_final_cl.c','niwot_tbed_node3.c']
+niwot_tbed_node4_sources = ['transport_final_cl.c','niwot_tbed_node4.c']
+ 
+# list all the source lists here
+app_sources_list = [test_trans_base_sources, test_trans_sourcenode_sources, 
+test_trans_midnode1_sources, test_trans_midnode2_sources, 
+test_trans_midnode3_sources, test_trans_midnode4_sources, 
+test_trans_midnode5_sources, niwot_tbed_base_sources, 
+niwot_tbed_node1_sources, niwot_tbed_node2_sources, niwot_tbed_node3_sources,
+niwot_tbed_node4_sources]
+
+# app build methods
+loadstat = ARGUMENTS.get('load', '0')
+build_app_function(env, app_names_list, app_sources_list, loadstat)
+

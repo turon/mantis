@@ -1,0 +1,24 @@
+#!/bin/bash
+
+`which msp430-gcc &> /dev/null`
+export RESULT=$?
+if test $RESULT -ne 0
+then
+  echo ""
+  echo "Please install the msp430 gcc compiler. Then, put the location of"
+  echo "msp430-gcc in your path and rerun this configure."
+  echo "The msp430 toolchain can be found in the downloads section of"
+  echo "the mantis website (http://mantis.cs.colorado.edu)."
+  echo ""
+  exit 1
+fi
+
+if ! test -e ../../configure
+then
+  echo "Please run autogen.sh in ../../ first"
+  exit 1
+fi
+
+AR=msp430-ar CC=msp430-gcc CFLAGS="-Wall -Wno-format -Os -g -mmcu=msp430x1611" LDFLAGS="-mmcu=msp430x1611" ASFLAGS="-mmcu=msp430x1611" ../../configure --enable-build=yes --enable-telosb=yes --host=msp430 $@
+
+

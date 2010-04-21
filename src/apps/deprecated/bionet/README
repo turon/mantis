@@ -1,0 +1,30 @@
+//  This file is part of MANTIS OS, Operating System
+//  See http://mantis.cs.colorado.edu/
+//
+//  Copyright (C) 2003,2004,2005 University of Colorado, Boulder
+//
+//  This program is free software; you can redistribute it and/or
+//  modify it under the terms of the mos license (see file LICENSE)
+
+
+Bionet README:
+
+The bionet applications are used by the BioNet group at the University of
+Colorado, Boulder. They are meant to demonstrate bi-directional communication.
+
+bedrest_sense.c: application which periodically reports light, temp, battery and
+calculated acceleration.
+
+bedrest_relay.c: application which can route messages from the bedrest_sense
+application to the PC, and messages from the PC (such as to click or change
+the LEDs) back out to the nodes.
+
+calibrate.c: This application is used to store the MAX/MIN values of the X/Y 
+axis of the accelerometer. This application must be placed on the node, and
+the 'calibrate' command must be executed. More instructions will follow on-
+screen. If this application is not run, the values reported will be incorrect.
+
+sense.c: DEPRECATED: an older version of the bionet demo as presented to NASA 
+in MAY '04.
+
+relay.c: DEPRECATED: the relay application used for the above sensing app.

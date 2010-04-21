@@ -1,0 +1,13 @@
+
+import glob
+import os
+from scripts.build_support import *
+
+
+Import ('*')
+files = glob.glob (env['rootdir'] + 'src/mos/kernel/pxa27x/*.c') + glob.glob(env['rootdir'] + 'src/mos/kernel/pxa27x/*.s')
+
+file_list = strip_path_from_files (files)
+
+kernel = env.Library ('kernel', file_list)
+env.Default(kernel)

@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if(-e ./boot.srec)
+      avr-objcopy --target=srec boot.elf boot.srec
+
+#write the fuse so it allows serial programming
+uisp -dprog=dapa -dlpt=/dev/parport0 --wr_fuse_h=0x10
+#erase what's there
+uisp -dprog=dapa -dlpt=/dev/parport0 --erase
+#send our boot-loader
+uisp -dprog=dapa -dlpt=/dev/parport0 --upload if=boot.srec
+#verify the file
+uisp -dprog=dapa -dlpt=/dev/parport0 --verify if=boot.srec

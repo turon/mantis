@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bionet_filter_list>
+  <bionet_filter name="charles's favorite sensors">
+    <bionet_constraint>
+      <hab_id>*</hab_id>
+      <hab_type>"Seb's Office"</hab_type>
+      <node_id>*</node_id>
+      <resource>*</resource>
+    </bionet_constraint>
+    <bionet_constraint>
+      <hab_id>"Mantis"</hab_id>
+      <hab_type>*</hab_type>
+      <node_id>*</node_id>
+      <resource>"Temp"</resource>
+    </bionet_constraint>
+  </bionet_filter>
+  <bionet_filter name="adam's favorite sensors">
+    <bionet_constraint>
+      <hab_id>*</hab_id>
+      <hab_type>"eccr324"</hab_type>
+      <node_id>*</node_id>
+      <resource>*</resource>
+    </bionet_constraint>
+  </bionet_filter>
+</bionet_filter_list>

@@ -1,0 +1,30 @@
+
+import glob
+import os
+import string
+from scripts.build_support import *
+
+Import ('*')
+
+
+# List of application files and sources defined here
+# Example definition:
+#
+#   app_names_list = ['foo', 'bar']
+#   foo_sources = ['foo.c']
+#   bar_sources = ['bar1.c', 'bar2.c', 'bar3.c']
+#   app_sources_list = [foo_sources, bar_sources]
+
+app_names_list = ['bionet_sense.elf', 'bionet_relay.elf', 'bedrest_sense.elf', 'bedrest_relay.elf', 'calibrate.elf']
+bionet_sense_sources = ['sense.c']
+bionet_relay_sources = ['relay.c']
+bedrest_sense_sources = ['bedrest_sense.c']
+bedrest_relay_sources = ['bedrest_relay.c']
+calibrate_sources = ['calibrate.c']
+app_sources_list = [bionet_sense_sources, bionet_relay_sources, bedrest_sense_sources, bedrest_relay_sources, calibrate_sources]
+
+
+
+# app build methods
+loadstat = ARGUMENTS.get('load', '0')
+build_app_function(env, app_names_list, app_sources_list, loadstat)

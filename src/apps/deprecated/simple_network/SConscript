@@ -1,0 +1,28 @@
+
+import glob
+import os
+import string
+from scripts.build_support import *
+
+Import ('*')
+
+
+# List of application files and sources defined here
+# Example definition:
+#
+#   app_names_list = ['foo.elf', 'bar.elf']
+#   foo_sources = ['foo.c']
+#   bar_sources = ['bar1.c', 'bar2.c', 'bar3.c']
+#   app_sources_list = [foo_sources, bar_sources]
+
+if env['plat'] != 'linux':
+    app_names_list = ['light_send.elf', 'temp_send.elf', 'receiver.elf']
+    light_send_sources = ['light_send.c']
+    temp_send_sources = ['thermal_send.c']
+    receiver_sources = ['receiver.c']
+    app_sources_list = [light_send_sources, temp_send_sources, receiver_sources]
+
+
+# app build methods
+loadstat = ARGUMENTS.get('load', '0')
+build_app_function(env, app_names_list, app_sources_list, loadstat)

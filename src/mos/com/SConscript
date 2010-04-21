@@ -1,0 +1,29 @@
+
+import glob
+import os
+from scripts.build_support import *
+
+Import ('*')
+
+envcopy = env.Copy()
+envcopy.ParseConfig ('pkg-config glib-2.0 --cflags --libs')
+
+files = glob.glob (envcopy['rootdir'] + 'src/mos/com/*.c')
+file_list = strip_path_from_files (files)
+
+if envcopy['debug'] == '1':
+    no_debug_list = ["uart.c", "serial.c"]
+    
+    debug_file_list = []
+    for myfile in file_list:
+        newfile = myfile.replace('.c','.debug.c')
+
+        if listfind(myfile, no_debug_list):
+            newfile = myfile
+        else:
+            env.Default(env.Debug(newfile, myfile))
+        debug_file_list.append(newfile)
+    com = envcopy.Library('com', debug_file_list)
+else:
+    com = envcopy.Library ('com', file_list)
+envcopy.Default(com)

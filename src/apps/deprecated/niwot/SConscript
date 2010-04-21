@@ -1,0 +1,35 @@
+
+import glob
+import os
+import string
+from scripts.build_support import *
+
+Import ('*')
+
+
+# List of application files and sources defined here
+# Example definition:
+#
+#   app_names_list = ['foo.elf', 'bar.elf']
+#   foo_sources = ['foo.c']
+#   bar_sources = ['bar1.c', 'bar2.c', 'bar3.c']
+#   app_sources_list = [foo_sources, bar_sources]
+
+app_names_list = ['fire_base.elf','fire_network.elf','test_range.elf', 'test_range_base.elf', 'zane_test_app.elf','niwot_base.elf','niwot_network.elf']
+test_range_sources = ['test_range.c']
+test_range_base_sources = ['test_range_base.c']
+fire_base_sources = ['fire_base.c']
+fire_network_sources = ['fire_network.c']
+zane_test_app_sources = ['zane_test_app.c']
+niwot_base_sources = ['niwot_base.c']
+niwot_network_sources = ['niwot_network.c']
+app_sources_list = [fire_base_sources, fire_network_sources, test_range_sources, test_range_base_sources, zane_test_app_sources]
+
+
+
+
+
+
+# app build methods
+loadstat = ARGUMENTS.get('load', '0')
+build_app_function(env, app_names_list, app_sources_list, loadstat)

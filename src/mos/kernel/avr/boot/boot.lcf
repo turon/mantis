@@ -1,0 +1,41 @@
+/*
+//  This file is part of MANTIS OS, Operating System for Nymph.
+//  See http://mantis.cs.colorado.edu/
+//
+//  Copyright (C) 2003 University of Colorado, Boulder
+//
+//  This program is free software; you can redistribute it and/or
+//  modify it under the terms of the GNU General Public License
+//  as published by the Free Software Foundation; either version 2
+//  of the License, or (at your option) any later version.
+//
+
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  (See http://www.gnu.org/copyleft/gpl.html)
+//  along with this program; if not, write to the Free Software
+//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,
+//  USA, or send email to help@mantis.cs.colorado.edu.
+*/
+/*
+  Project Mantis
+  File: boot.lcf
+  Author: Jeff Rose
+  Date: 3-15-03
+
+  A linker control file for the atmega128 bootloader.  This file is included
+  at link time to tell the linker where to place the text section in the 
+  atmega128 flash.
+*/
+
+/* linker control file for boot.c */
+
+MEMORY
+{
+  /* put everything at word address 0xF800 (linker is in units of bytes) */
+  text (rx) : ORIGIN = 0x1E000, LENGTH = 0x2000
+}

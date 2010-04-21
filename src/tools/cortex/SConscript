@@ -1,0 +1,27 @@
+
+import glob
+import os
+from scripts.build_support import *
+
+Import ('*')
+files = glob.glob (env['rootdir'] + 'src/tools/cortex/*.c')
+
+envcopy = env.Copy ()
+envcopy.ParseConfig ('pkg-config gnet-2.0 libgnomecanvas-2.0 ' +
+                     'libglade-2.0 libxml-2.0 --cflags --libs')
+
+file_list = strip_path_from_files (files)
+
+add_include_path (envcopy['CPPPATH'], '#src/tools')
+add_include_path (envcopy['CPPPATH'], '#src/tools/cortex/include')
+
+add_link_lib (envcopy['LIBS'], '-lgtkdatabox')
+add_link_lib (envcopy['LIBS'], '-lpopt')
+
+print "$$$$$$$$$$$$$$$$$$   "
+print envcopy['LIBS']
+print "$$$$$$$$$$$$$$$$$$   "
+print envcopy['CPPPATH']
+cortex = envcopy.Program ('cortex', file_list)
+
+Return ('cortex')

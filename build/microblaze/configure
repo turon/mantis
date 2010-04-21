@@ -1,0 +1,25 @@
+#!/bin/bash
+
+`which mb-gcc &> /dev/null`
+export RESULT=$?
+if test $RESULT -ne 0
+then
+  echo ""
+  echo "Please install the microblaze gcc compiler. Then, put the location of"
+  echo "mb-gcc in your path and rerun this configure."
+  echo "The microblaze toolchain can be found on the Xilinx EDK cd."
+  echo ""
+  exit 1
+fi
+
+
+if ! test -e ../../configure
+then
+  echo "Please run autogen.sh in ../../ first"
+  exit 1
+fi
+
+AR=mb-ar CC=mb-gcc CFLAGS="-Wall -g -Os -mcpu=v5.00.c -mno-xl-soft-mul -mxl-pattern-compare -I/usr/include" ../../configure --enable-build=yes --enable-microblaze=yes --host=microblaze $@
+
+#AR=mb-ar CC=mb-gcc CFLAGS="-Wall -ggdb -O0 -mcpu=v5.00.c -mno-xl-soft-mul   -mxl-pattern-compare -Wl,-T -Wl,NodeBlaze_linker_script.ld  -g    -I./microblaze_0/include/  -INodeBlaze/src/  -L./microblaze_0/lib/   " ../../configure --enable-build=yes  $@
+

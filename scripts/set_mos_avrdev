@@ -1,0 +1,36 @@
+#!/bin/bash
+
+rm -f boot.elf boot.srec
+
+cp ../build/avrdev/src/mos/kernel/avr/boot/boot.elf .
+
+if [ ! -f ./boot.srec ]
+then
+      avr-objcopy --target=srec boot.elf boot.srec
+fi
+
+#which programming board to use:
+#programmer="dapa"
+programmer="-dprog=stk500"
+
+#which device to communicate over:
+#device="-dlpt=/dev/parport0"
+device="-dserial=/dev/ttyS0"
+
+#which processor we're communicating with
+dpart="-dpart=ATmega128"
+
+echo "Using $programmer programming board"
+
+#write the fuse so it allows serial programming
+uisp $programmer $device $dpart --wr_fuse_h=0xd0
+uisp $programmer $device $dpart --wr_fuse_l=0xff
+uisp $programmer $device $dpart --wr_fuse_e=0xff
+#erase what's there
+uisp $programmer $device $dpart --erase
+#send our boot-loader
+uisp $programmer $device $dpart --upload if=boot.srec
+#verify the file
+uisp $programmer $device $dpart --verify if=boot.srec
+
+echo "done."

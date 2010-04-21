@@ -1,0 +1,25 @@
+
+Import ('*')
+
+SConscript (['kernel/SConscript'], 'env')
+
+SConscript (['sys/SConscript'], 'env')
+
+SConscript (['com/SConscript'], 'env')
+
+SConscript (['dev/SConscript'], 'env')
+
+if env['plat'] != 'linux':
+    SConscript (['net/SConscript'], 'env')
+
+SConscript (['share/SConscript'], 'env')
+
+#mos = env.Library ('mos',
+#                   ['kernel/avr/libkernel.a',
+#                    'sys/libsys.a',
+#                    'com/libcom.a',
+#                    'net/libnet.a',
+#		    'dev/libdev.a',
+#                    'share/libshare.a']
+#                   )
+

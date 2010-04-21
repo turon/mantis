@@ -1,0 +1,39 @@
+#!/bin/bash
+
+rm -f boot.elf boot.srec
+
+cp ../build/micaz/src/mos/kernel/avr/boot/boot.elf .
+
+if [ ! -f ./boot.srec ]
+then
+      avr-objcopy --target=srec boot.elf boot.srec
+fi
+
+#which programming board to use:
+#programmer="dapa"
+programmer="-dprog=mib510"
+
+#which device to communicate over:
+#device="-dlpt=/dev/parport0"
+#device="-dserial=/dev/tts/USB0"
+device="-dserial=/dev/ttyUSB0"
+
+#which processor we're communicating with
+dpart="-dpart=ATmega128"
+
+dspeed="-dspeed=115200"
+#dspeed=""
+
+echo "Using $programmer programming board"
+
+#write the fuse so it allows serial programming
+#uisp $programmer $device $dpart --wr_fuse_e=ff
+uisp $programmer $device $dpart $dspeed --wr_fuse_h=0xd0
+#erase what's there
+uisp $programmer $device $dpart $dspeed --erase
+#send our boot-loader
+uisp $programmer $device $dpart $dspeed --upload if=boot.srec
+#verify the file
+uisp $programmer $device $dpart $dspeed --verify if=boot.srec
+
+echo "done."
